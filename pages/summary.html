@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sammanfattning · Streckkodsstaden</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <script src="../scripts/auth-gate.js"></script>
+<a id="skip-to-content" class="skip-to-content" href="#content">Hoppa till huvudinnehåll</a>
+
+  <header class="rk-header">
+    <div class="rk-main">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center rk-main-row">
+          <a href="home.html" class="rk-logo text-decoration-none" aria-label="Gå till startsidan">
+            <img src="../assets/images/övmyndigheten.png" alt="Regeringskansliet" class="rk-logo-img">
+          </a>
+          <div class="d-flex flex-column align-items-end gap-1 rk-main-right">
+            <div class="d-flex gap-3 rk-toplinks-row">
+              <button class="rk-toplink" type="button">Lyssna</button>
+              <button class="rk-toplink" type="button">Lättläst</button>
+              <button class="rk-toplink" type="button">Teckenspråk</button>
+              <button class="rk-toplink" type="button" onclick="translateToEnglish()">Engelska</button>
+            </div>
+            <div class="rk-search-login-row">
+            <form class="rk-search-form" role="search" aria-label="Sök på sidan">
+              <label for="rk-search-input-summary" class="visually-hidden">Sök i Insiktspunkter</label>
+              <input
+                id="rk-search-input-summary"
+                class="rk-search-input"
+                type="search"
+                placeholder="Sök på övervakningsmyndigheten"
+                name="q"
+              />
+              <button class="rk-search-button" type="submit">
+                Sök
+              </button>
+            </form>
+              <div class="rk-header-login-actions">
+                <span class="rk-header-authed d-flex align-items-center gap-2">
+                  <span class="small text-nowrap fw-semibold">Inloggad: <strong id="poi-header-user-name"></strong></span>
+                  <button type="button" class="rk-header-logout-btn" id="poi-btn-header-logout">Logga ut</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rk-navbar">
+      <div class="container">
+        <nav class="rk-nav d-flex gap-3" aria-label="Huvudnavigering">
+          <a href="index.html" class="rk-nav-link">Startsida</a>
+          
+          <a href="poi-1.html" class="rk-nav-link">Ministern</a>
+          <a href="poi-2.html" class="rk-nav-link">Kameraoffensiven</a>
+          <a href="poi-3.html" class="rk-nav-link">Biometri</a>
+          <a href="poi-4.html" class="rk-nav-link">Palantir / Acus</a>
+          <a href="poi-5.html" class="rk-nav-link">Kylande effekten</a>
+          <a href="poi-6.html" class="rk-nav-link">Övervakningskapitalism</a>
+          <a href="poi-final.html" class="rk-nav-link">Slutsats</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="pagecontainer">
+    <div class="container container--main my-4">
+
+    <main id="content" class="col-md-10 offset-md-1" tabindex="-1">
+      <!-- HERO -->
+      <section class="hero fade-in-on-scroll slide-in-left is-visible" id="hero" aria-labelledby="hero-title">
+        <div class="mb-3">
+          <span class="badge bg-primary">Det sista steget</span>
+        </div>
+        <h1 id="hero-title" class="display-5 fade-in-on-scroll">
+          Streckkodsstaden
+        </h1>
+        <p class="lead fade-in-on-scroll">
+          <strong>Sammanfattning: den algoritmiska staten vid horisonten.</strong> Resan genom Stockholms
+          punktmoln avslutas inte med en lösning utan med en varning. Vi står vid tröskeln till ett samhälle där
+          ”frihet” omdefinieras som ”lydnad inom kamerans synfält”. Slutsatsen knyter ihop Gunnar Strömmers
+          politiska omsvängning, kameragridens okontrollerade expansion och Palantirs ”svarta låda”-logik till en
+          existentiell fråga:
+          <em>Om staten ser allt, känner till din umgängeskrets och förutsäger ditt framtida beteende – vad finns då
+          kvar av den mänskliga andan?</em>
+        </p>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="architecture">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Arkitekturen för permanent minne</h2>
+          <span class="badge bg-light text-dark border">Digitalt panoptikon</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            Stockholm du utforskat i kartan är mer än en stad; det är ett laboratorium för en ny form av
+            social styrning. Vi har gått från en liberal demokrati – där staten är transparent och medborgaren
+            privat – till ett digitalt panoptikon där staten är hemlig och medborgaren en streckkod.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Uppdriftsglidningens oundviklighet:</strong> Historien visar att övervakningsinfrastruktur sällan
+            dras tillbaka. De 5&nbsp;000 kamerorna och 3&nbsp;000 drönarna som i dag sätts in under förevändningen att
+            ”stoppa gängvåld” blir kvar långt efter att rubrikerna bleknat. Som i Prop. 2025/26:150 vidgas redan
+            vem som ”behöver” spåras – från ”kidnappare” till ”ordningsstörare”. I en framtida mer radikal
+            regerings händer blir ”Strömmer-griden” ett verktyg för att tysta politiskt motstånd, klimataktivism
+            och all social avvikelse.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Den privatiserade förståelsen:</strong> Genom att outsourca polisens ”intelligens” till Palantir har
+            Sverige gett upp rättsstatens grund: ansvarighet. När rättvisa gömmer sig i en proprietär svart låda
+            är det inte längre rättvisa utan kalkyl. Vi går in i en tid av ”skuld genom matematik”, där din sociala
+            graf och ditt digitala fotavtryck avgör din frihetsnivå innan du begått brott.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="nothing-to-hide">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Fällan ”inget att dölja”</h2>
+          <span class="badge bg-light text-dark border">Psykologisk kolonisering</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            Övervakningsstatens största framgång är den psykologiska koloniseringen av medborgarna. Argumentet
+            ”om du inte har något att dölja behöver du inte vara rädd” är en fälla som ska få dig att ge upp just
+            det som gör dig till en individ.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Integritet som ekosystem:</strong> Som Edward Snowden och Shoshana Zuboff menar är integritet
+            ingen lyx utan miljön där alla andra rättigheter växer. Utan ett privat rum att tänka, organisera och
+            fela i blir demokratin ett skal. Val hålls fortfarande, men de styrs av en algoritmisk stats ”knuffar”
+            som känner dina rädslor bättre än du själv.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Stockholmsparadoxen:</strong> Sverige, en gång fyrbåk för transparens och mänskliga rättigheter,
+            leder nu kapplöpningen mot ett kinesiskt socialt styrningssystem. Fallet <em>Centrum för rättvisa mot
+            Sverige</em> visade att staten kan gå för långt; ändå, fem år senare, ger vi samma stat makt att skanna våra
+            ansikten i realtid.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="choice">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Valet: medborgare eller datapunkt?</h2>
+          <span class="badge bg-light text-dark border">Streckkodsstaden</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            När du lämnar den interaktiva kartan börjar Stockholms blåvita punktmoln flimra och förvandlas.
+            Byggnader, parker och människor löses upp i vertikala linjer – en massiv streckkod över hela staden.
+          </p>
+          <p class="fade-in-on-scroll">
+            Webbplatsen är inte bara fakta; den är en spegel. Den ber dig se den digitala tvilling regeringen
+            bygger av ditt liv och fråga: <strong>Vem äger den här datan? Vem styr algoritmen? Och vem är du när du
+            blir iakttagen?</strong>
+          </p>
+          <p class="fade-in-on-scroll">
+            Systemet de bygger ska vara ”friktionsfritt”, bekvämt, tryggt. Men ett samhälle som värdesätter
+            ”beteendesäkerhet” högre än ”mänsklig frihet” har redan slutat vara en demokrati.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>”Integritet är för de maktlösa; transparens är för de mäktiga.”</strong> I dag bygger Sverige
+            raka motsatsen.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Systemet glömmer aldrig. Systemet sover aldrig. Snart finns ingen plats kvar att gömma sig.</strong>
+          </p>
+        </div>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="sources">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Källor och referenser</h2>
+          <span class="badge bg-light text-dark border">Underlag och kontext</span>
+        </div>
+        <div class="panel-body">
+          <ol class="fade-in-on-scroll">
+            <li><strong>Rätt:</strong> Regeringens proposition 2025/26:150 (realtids-AI); Prop. 2024/25:93 (kameraoffensiven).</li>
+            <li><strong>Rättsligt:</strong> <em>Centrum för rättvisa mot Sverige</em>, Grand Chamber-dom (2021).</li>
+            <li><strong>Riksdag:</strong> Interpellation 2025/26:301 (Palantir/Acus).</li>
+            <li><strong>Teoretiskt:</strong> Shoshana Zuboff, <em>The Age of Surveillance Capitalism</em>; Edward Snowden,
+              <em>Permanent Record</em>.</li>
+            <li><strong>Mänskliga rättigheter:</strong> Civil Rights Defenders, skuggrapport till FN (2025/2026).</li>
+            <li><strong>Sociologiskt:</strong> <em>Svenskar och Internet</em> (2025) om åldersbaserad skepticism mot övervakning.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+  </div>
+  </div>
+
+  <footer class="footer--page">
+    <div class="footer--page__bar">
+      <div class="container">
+        <div class="row py-4 g-4">
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Innehåll</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="index.html">Startsida</a></li>
+              <li><a href="poi-2.html">Kameraoffensiven</a></li>
+              <li><a href="poi-3.html">Biometri</a></li>
+              <li><a href="poi-4.html">Palantir / Acus</a></li>
+              <li><a href="poi-5.html">Kylande effekten</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="poi-final.html">Slutsats</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Projekt</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="home.html">Hem</a></li>
+              <li><a href="poi-1.html">POI 1 · Ministerns hem</a></li>
+              <li><a href="poi-2.html">Kameragriden</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="poi-final.html">Streckkodsstaden</a></li>
+              <li><a href="summary.html">Sammanfattning</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Kontakt</h2>
+            <p class="footer--page__address">Regeringskansliet<br>103 33 Stockholm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer--page__senderinfo">
+      <div class="container py-3">
+        <div class="d-flex flex-wrap align-items-center gap-3 justify-content-between">
+          <a href="index.html" class="rk-logo rk-logo--footer text-decoration-none" aria-label="Gå till startsidan">
+            <div class="rk-logo-mark" aria-hidden="true"></div>
+            <div class="rk-logo-text">
+              <div class="rk-logo-title">Regeringskansliet · Projekt</div>
+            </div>
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <p class="mb-0 small text-muted">Insiktspunkter · Stockholm 2026</p>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-accept-cookies">Acceptera cookies</button>
+              <a class="btn btn-sm btn-outline-secondary" href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" class="d-none"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'sv',
+          includedLanguages: 'en',
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
+    }
+
+    function translateToEnglish() {
+      var combo = document.querySelector('#google_translate_element select');
+      if (!combo) return;
+      combo.value = 'en';
+      combo.dispatchEvent(new Event('change'));
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="../scripts/poi-header-logout.js"></script>
+  <script src="../scripts/script.js"></script>
+  <script src="../scripts/cookie-consent.js"></script>
+</body>
+</html>
+

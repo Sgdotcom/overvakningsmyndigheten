@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kylande effekten · Rätten att protestera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <script src="../scripts/auth-gate.js"></script>
+<a id="skip-to-content" class="skip-to-content" href="#content">Hoppa till huvudinnehåll</a>
+
+  <header class="rk-header">
+    <div class="rk-main">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center rk-main-row">
+          <a href="home.html" class="rk-logo text-decoration-none" aria-label="Gå till startsidan">
+            <img src="../assets/images/övmyndigheten.png" alt="Regeringskansliet" class="rk-logo-img">
+          </a>
+          <div class="d-flex flex-column align-items-end gap-1 rk-main-right">
+            <div class="d-flex gap-3 rk-toplinks-row">
+              <button class="rk-toplink" type="button">Lyssna</button>
+              <button class="rk-toplink" type="button">Lättläst</button>
+              <button class="rk-toplink" type="button">Teckenspråk</button>
+              <button class="rk-toplink" type="button" onclick="translateToEnglish()">Engelska</button>
+            </div>
+            <div class="rk-search-login-row">
+            <form class="rk-search-form" role="search" aria-label="Sök på sidan">
+              <label for="rk-search-input-poi5" class="visually-hidden">Sök i Insiktspunkter</label>
+              <input
+                id="rk-search-input-poi5"
+                class="rk-search-input"
+                type="search"
+                placeholder="Sök på övervakningsmyndigheten"
+                name="q"
+              />
+              <button class="rk-search-button" type="submit">
+                Sök
+              </button>
+            </form>
+              <div class="rk-header-login-actions">
+                <span class="rk-header-authed d-flex align-items-center gap-2">
+                  <span class="small text-nowrap fw-semibold">Inloggad: <strong id="poi-header-user-name"></strong></span>
+                  <button type="button" class="rk-header-logout-btn" id="poi-btn-header-logout">Logga ut</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rk-navbar">
+      <div class="container">
+        <nav class="rk-nav d-flex gap-3" aria-label="Huvudnavigering">
+          <a href="index.html" class="rk-nav-link">Startsida</a>
+          
+          <a href="poi-1.html" class="rk-nav-link">Ministern</a>
+          <a href="poi-2.html" class="rk-nav-link">Kameraoffensiven</a>
+          <a href="poi-3.html" class="rk-nav-link">Biometri</a>
+          <a href="poi-4.html" class="rk-nav-link">Palantir / Acus</a>
+          <a href="poi-5.html" class="rk-nav-link">Kylande effekten</a>
+          <a href="poi-6.html" class="rk-nav-link">Övervakningskapitalism</a>
+          <a href="poi-final.html" class="rk-nav-link">Slutsats</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="pagecontainer">
+    <div class="container container--main my-4">
+
+    <main id="content" class="col-md-10 offset-md-1" tabindex="-1">
+      <!-- HERO -->
+      <section class="hero fade-in-on-scroll slide-in-left is-visible" id="hero" aria-labelledby="hero-title">
+        <div class="mb-3">
+          <span class="badge bg-primary">POI 5 · Den ”kylande effekten”</span>
+        </div>
+        <h1 id="hero-title" class="display-5 fade-in-on-scroll">
+          Den ”kylande effekten” &amp; <span class="text-primary">rätten att protestera</span>
+        </h1>
+        <p class="lead fade-in-on-scroll">
+          Att iaktta motståndet. I mars 2026 varnade internationella observatörer för att Sverige genomgår en
+          ”gradvis erosion av demokratiska rättigheter”. Denna punkt visar hur statens nya övervakningsapparat
+          används för att kyla ner aktivism, avanonymisera oliktänkande och skapa ett permanent register över
+          politiskt deltagande. När priset för att protestera är att hamna i en statsdatabas blir rätten att
+          samlas en lyx få har råd med.
+        </p>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="summary">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Sammanfattning</h2>
+          <span class="badge bg-light text-dark border">Att iaktta motståndet</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            Att iaktta motståndet. I mars 2026 varnade internationella observatörer för att Sverige genomgår en
+            ”gradvis erosion av demokratiska rättigheter”. Denna punkt visar hur statens nya övervakningsapparat
+            används för att kyla ner aktivism, avanonymisera oliktänkande och skapa ett permanent register över
+            politiskt deltagande. När priset för att protestera är att hamna i en statsdatabas blir rätten att
+            samlas en lyx få har råd med.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="deep-dive">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Fördjupning: Den ”kylande effekten” &amp; rätten att protestera</h2>
+          <span class="badge bg-light text-dark border">FN · Mary Lawlor</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            <strong>Stigmatisering av oliktänkande.</strong> År 2026 markerade en vändpunkt i svenska statens
+            förhållande till sina aktivister. FN:s särskilda rapportör Mary Lawlor utfärdade en formell varning om att
+            svenska aktivister – särskilt inom klimaträttvisa och mänskliga rättigheter – allt oftare märks som
+            ”potentiella terrorister” eller ”inre hot” i officiellt språkbruk.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Verktygen för stigmatisering:</strong> Övervakning är det främsta verktyget. Genom att rikta
+            ”antigäng”-teknik mot fredliga demonstranter kriminaliseras i praktiken själva protesten. Det skapar
+            en berättelse där varje deltagare i en demonstration blir intressant för polisen, oavsett om brott
+            begåtts.
+          </p>
+
+          <h3 class="subheading mt-3">Att övervaka ”fienden”: det psykologiska buret</h3>
+          <p class="fade-in-on-scroll">
+            Klimataktivister och människorättsförsvarare har blivit primära mål för det nya lagret av
+            vertikal övervakning.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Den digitala skuggan:</strong> När staten sätter in 4K-drönare och ansiktsigenkänning vid en
+            demonstration uppstår en ”kylande effekt”. Det är inte bara en juridisk teori utan en psykologisk
+            verklighet. För studenter, offentliganställda eller migranter kan vetskapen om att ansiktet filmas och
+            korsrefereras med ID vid en protest räcka för att stanna hemma.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Rädslan för listan:</strong> Det som kyler kommer av rädslan för yrkesmässiga och sociala
+            konsekvenser av att stå ”på en lista”. I ett samhälle där polisen med Palantir/Acus kartlägger
+            sociala grafer kan ett enda besök vid en ”kontroversiell” protest knyta dig till ”kluster” av oliktänkande
+            som följer dig genom varje bakgrundskontroll livet ut.
+          </p>
+
+          <h3 class="subheading mt-3">Att riva anonymiteten: folkmassans död</h3>
+          <p class="fade-in-on-scroll">
+            Historiskt låg protestens kraft i folkmassans anonymitet. Anonymitet gav utrymme att uttrycka radikala
+            eller impopulära idéer utan omedelbar statlig vedergällning.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Avanonymisering:</strong> Realtids-AI (Prop. 2025/26:150) tar bort detta demokratiska skydd.
+            Genom att kartlägga vem som talar med vem på en demonstration kan polisen identifiera
+            organisatörer, följa ”influencers” i mängden och bryta ledarstrukturer innan ett tåg ens startat.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Social kartläggning:</strong> Systemet ser inte bara ett ansikte utan en nod i ett nätverk. Det
+            kan visa att ”person A” pratade med ”person B” i tio minuter. Staten kan bygga en social karta över
+            hela motståndsrörelsen och göra hemlig eller spontan organisering nästan omöjlig.
+          </p>
+
+          <h3 class="subheading mt-3">Uppdriftsglidning: från gäng till ”stökare”</h3>
+          <p class="fade-in-on-scroll">
+            Det farligaste med Sveriges nya lagar är den oundvikliga uppdriftsglidningen (mission creep).
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Förskjutna definitioner:</strong> Verktyg som såldes in som skydd mot ”gängledare” och
+            ”terrorister” används redan mot ”ordningsstörare”. När politiken vänder vidgas begreppet
+            ”stökare” till den som just nu utmanar makten.
+          </p>
+          <p class="fade-in-on-scroll">
+            <strong>Den permanenta infrastrukturen:</strong> Regeringar växlar, men övervakningsinfrastrukturen
+            består. De 5&nbsp;000 AI-kamerorna och Palantir-dossiererna som byggs i dag för att ”stoppa gäng” är
+            samma verktyg som en framtida mer auktoritär regering kan ärva för att tysta politiska motståndare.
+            När polisstatens infrastruktur väl är byggd rivs den sällan, om någonsin.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+  </div>
+
+  <footer class="footer--page">
+    <div class="footer--page__bar">
+      <div class="container">
+        <div class="row py-4 g-4">
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Innehåll</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="index.html">Startsida</a></li>
+              <li><a href="poi-2.html">Kameraoffensiven</a></li>
+              <li><a href="poi-3.html">Biometri</a></li>
+              <li><a href="poi-4.html">Palantir / Acus</a></li>
+              <li><a href="poi-5.html">Kylande effekten</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="poi-final.html">Slutsats</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Projekt</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="home.html">Hem</a></li>
+              <li><a href="poi-1.html">POI 1 · Ministerns hem</a></li>
+              <li><a href="poi-2.html">Kameragriden</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="poi-final.html">Streckkodsstaden</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Kontakt</h2>
+            <p class="footer--page__address">Regeringskansliet<br>103 33 Stockholm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer--page__senderinfo">
+      <div class="container py-3">
+        <div class="d-flex flex-wrap align-items-center gap-3 justify-content-between">
+          <a href="index.html" class="rk-logo rk-logo--footer text-decoration-none" aria-label="Gå till startsidan">
+            <div class="rk-logo-mark" aria-hidden="true"></div>
+            <div class="rk-logo-text">
+              <div class="rk-logo-title">Regeringskansliet · Projekt</div>
+            </div>
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <p class="mb-0 small text-muted">Insiktspunkter · Stockholm 2026</p>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-accept-cookies">Acceptera cookies</button>
+              <a class="btn btn-sm btn-outline-secondary" href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" class="d-none"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'sv',
+          includedLanguages: 'en',
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
+    }
+
+    function translateToEnglish() {
+      var combo = document.querySelector('#google_translate_element select');
+      if (!combo) return;
+      combo.value = 'en';
+      combo.dispatchEvent(new Event('change'));
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="../scripts/poi-header-logout.js"></script>
+  <script src="../scripts/script.js"></script>
+  <script src="../scripts/cookie-consent.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title>POI 1 · Ministerns hem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <script src="../scripts/auth-gate.js"></script>
+<!-- Skip link (regeringen.se pattern) -->
+  <a id="skip-to-content" class="skip-to-content" href="#content">Hoppa till huvudinnehåll</a>
+
+  <!-- Full-width header like regeringen.se -->
+  <header class="rk-header">
+    <div class="rk-main">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center rk-main-row">
+          <a href="home.html" class="rk-logo text-decoration-none" aria-label="Gå till startsidan">
+            <img src="../assets/images/övmyndigheten.png" alt="Regeringskansliet" class="rk-logo-img">
+          </a>
+          <div class="d-flex flex-column align-items-end gap-1 rk-main-right">
+            <div class="d-flex gap-3 rk-toplinks-row">
+              <button class="rk-toplink" type="button">Lyssna</button>
+              <button class="rk-toplink" type="button">Lättläst</button>
+              <button class="rk-toplink" type="button">Teckenspråk</button>
+              <button class="rk-toplink" type="button" onclick="translateToEnglish()">Engelska</button>
+            </div>
+            <div class="rk-search-login-row">
+            <form class="rk-search-form" role="search" aria-label="Sök på sidan">
+              <label for="rk-search-input-poi1" class="visually-hidden">Sök i Insiktspunkter</label>
+              <input
+                id="rk-search-input-poi1"
+                class="rk-search-input"
+                type="search"
+                placeholder="Sök på övervakningsmyndigheten"
+                name="q"
+              />
+              <button class="rk-search-button" type="submit">
+                Sök
+              </button>
+            </form>
+              <div class="rk-header-login-actions">
+                <span class="rk-header-authed d-flex align-items-center gap-2">
+                  <span class="small text-nowrap fw-semibold">Inloggad: <strong id="poi-header-user-name"></strong></span>
+                  <button type="button" class="rk-header-logout-btn" id="poi-btn-header-logout">Logga ut</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rk-navbar">
+      <div class="container">
+        <nav class="rk-nav d-flex gap-3" aria-label="Huvudnavigering">
+          <a href="index.html" class="rk-nav-link">Startsida</a>
+          <a href="poi-1.html" class="rk-nav-link">Ministern</a>
+          <a href="poi-2.html" class="rk-nav-link">Kameraoffensiven</a>
+          <a href="poi-3.html" class="rk-nav-link">Biometri</a>
+          <a href="poi-4.html" class="rk-nav-link">Palantir / Acus</a>
+          <a href="poi-5.html" class="rk-nav-link">Kylande effekten</a>
+          <a href="poi-6.html" class="rk-nav-link">Övervakningskapitalism</a>
+          <a href="poi-final.html" class="rk-nav-link">Slutsats</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page container: main content in constrained width (regeringen.se pattern) -->
+  <div class="pagecontainer">
+    <div class="container container--main my-4">
+
+    <main id="content" class="col-md-10 offset-md-1" tabindex="-1">
+      <!-- HERO -->
+      <section class="hero fade-in-on-scroll slide-in-left is-visible" id="hero" aria-labelledby="hero-title">
+        <div class="mb-3">
+            <span class="badge bg-primary">POI 1 · Ministerns hem</span>
+        </div>
+        <h1 id="hero-title" class="display-5 fade-in-on-scroll">
+            <span class="profile-hover-trigger">
+                <span id="gunnar-strommer-hover">Gunnar Strömmer</span>:
+                <div class="profile-popout">
+                    <img src="../assets/images/gs.png" alt="Gunnar Strömmer" class="img-fluid mb-2">
+                    <h5>Gunnar Strömmer</h5>
+                    <p class="small">Justitieminister. Arkitekt bakom de omdiskuterade övervakningslagarna 2026.</p>
+                </div>
+            </span>
+            <span class="text-primary">Arkitekten bakom det digitala panoptikonet</span>
+        </h1>
+        <p class="lead fade-in-on-scroll">
+            En gång Sveriges mest framträdande försvarare av individens rättigheter – nu den drivande kraften
+            bakom den mest långtgående utbyggnaden av statlig övervakning i landets historia.
+            Denna sida följer hur en frihetskämpe blev
+            arkitekten bakom ett system som behandlar varje medborgare som en potentiell datapunkt.
+        </p>
+
+        <div class="d-flex flex-wrap gap-2 mb-3 fade-in-on-scroll">
+            <span class="badge bg-light text-dark border"><strong>Fokus:</strong> Från medborgerliga fri- och rättigheter till AI‑övervakning</span>
+            <span class="badge bg-light text-dark border"><strong>Tidslinje:</strong> 2002–2026</span>
+            <span class="badge bg-light text-dark border"><strong>Nyckellag:</strong> Prop. 2025/26:150</span>
+        </div>
+
+        <div class="d-flex gap-2 mb-3">
+            <button class="btn btn-primary" data-scroll="#deep-dive">
+            Läs fördjupningen
+            </button>
+            <button class="btn btn-outline-secondary" id="openSourcesHero">
+            Visa alla källor
+            </button>
+        </div>
+        <p class="small fade-in-on-scroll">
+            Utformad som ett interaktivt underlag för journalister, aktivister och beslutsfattare som följer
+            Sveriges förskjutning från <strong>rättsstatlig förebild</strong> till <strong>realtidsbaserad biometrisk övervakning</strong>.
+        </p>
+      </section>
+
+      <!-- SUBJECT PROFILE: image + biodata -->
+      <section class="panel fade-in-on-scroll slide-in-right" id="subject-profile" aria-labelledby="subject-profile-title">
+        <div class="d-flex justify-content-between align-items-baseline mb-3">
+          <h2 id="subject-profile-title" class="section-title fade-in-on-scroll">Personprofil</h2>
+          <span class="badge bg-light text-dark border">Dossier</span>
+        </div>
+        <div class="subject-profile-content">
+          <div class="subject-profile-image fade-in-on-scroll">
+            <img src="../assets/images/gs.png" alt="Gunnar Strömmer" class="img-fluid">
+          </div>
+          <div class="subject-profile-data fade-in-on-scroll">
+            <dl class="subject-dl">
+              <dt>Fullständigt namn</dt>
+              <dd>Gunnar Sören Folke Strömmer</dd>
+              <dt>Födelsedatum</dt>
+              <dd>19 september 1972</dd>
+              <dt>Ålder (2026)</dt>
+              <dd>53</dd>
+              <dt>Födelseort</dt>
+              <dd>Örnsköldsviks församling, Västernorrlands län (Örnsköldsvik)</dd>
+              <dt>Medborgarskap</dt>
+              <dd>Svenskt</dd>
+              <dt>Politisk tillhörighet</dt>
+              <dd>Moderaterna</dd>
+              <dt>Utbildning</dt>
+              <dd>Juristexamen (Uppsala universitet); EU-rätt och konstitutionell rätt, Universität Trier (1996–1997)</dd>
+              <dt>Befattning</dt>
+              <dd>Sveriges justitieminister (sedan 18 okt 2022); chef för justitiedepartementet, Regeringen Kristersson</dd>
+              <dt>Tidigare roller</dt>
+              <dd>Moderaternas partisekreterare (2017–2022); advokat, Gernandt &amp; Danielsson (2011–2017); chef, <em>Centrum för rättvisa</em> (2002–2011); ordförande Moderata ungdomsförbundet (1998–2000)</dd>
+              <dt>Utmärkelser</dt>
+              <dd>Bohmanpriset (2004); Årets svensk, Fokus (2013); Konung Carl XVI Gustafs jubileumsminnestecken IV (2023)</dd>
+              <dt>Make/maka</dt>
+              <dd>Irene Beertema (vigda 5 aug 2006, Nordmalings kyrka); stabschef kulturdepartementet (från dec 2022)</dd>
+              <dt>Barn</dt>
+              <dd>3</dd>
+              <dt>Föräldrar</dt>
+              <dd>Karl-Sören och Heléne Strömmer</dd>
+              <dt>Folkbokföringsadress</dt>
+              <dd>Brättnevägen 3<br>12264 Enskede</dd>
+              <dt>Fordon</dt>
+              <dd>Volvo XC70 II D4 AWD, 181 hk, 2016 (makans bil)</dd>
+              <dt>Registreringsnummer</dt>
+              <dd>YAL864 · YV1BZ81C6G1251131</dd>
+            </dl>
+            <p class="small text-muted mt-2 mb-0">
+              Biodata från offentliga källor (bland annat Wikipedia, Regeringskansliet).
+            </p>
+
+            <div class="row g-2 mt-3" aria-label="Skärmbilder">
+              <div class="col-12 col-md-6">
+                <button
+                  type="button"
+                  class="p-0 border-0 bg-transparent w-100"
+                  data-bs-toggle="modal"
+                  data-bs-target="#imageModal"
+                  data-img="../assets/images/Screenshot%202026-03-18%20at%2009.57.17.png"
+                  data-alt="Skärmbild 1"
+                  aria-label="Öppna skärmbild 1 större"
+                >
+                  <img
+                    src="../assets/images/Screenshot%202026-03-18%20at%2009.57.17.png"
+                    alt="Skärmbild 1"
+                    class="img-fluid border"
+                    loading="lazy"
+                    style="cursor: zoom-in;"
+                  />
+                </button>
+              </div>
+              <div class="col-12 col-md-6">
+                <button
+                  type="button"
+                  class="p-0 border-0 bg-transparent w-100"
+                  data-bs-toggle="modal"
+                  data-bs-target="#imageModal"
+                  data-img="../assets/images/Screenshot%202026-03-18%20at%2009.57.38.png"
+                  data-alt="Skärmbild 2"
+                  aria-label="Öppna skärmbild 2 större"
+                >
+                  <img
+                    src="../assets/images/Screenshot%202026-03-18%20at%2009.57.38.png"
+                    alt="Skärmbild 2"
+                    class="img-fluid border"
+                    loading="lazy"
+                    style="cursor: zoom-in;"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE ASIDE -->
+      <aside class="panel fade-in-on-scroll slide-in-right" aria-label="Profil och nyckeltal">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Profilsignal</h2>
+          <span class="badge bg-secondary">Riskmodell · 2026</span>
+        </div>
+        <div>
+          <h3 class="subheading fade-in-on-scroll">Gunnar Strömmer<span class="text-primary"> / 1972</span></h3>
+          <p class="small fade-in-on-scroll">
+              Grundare av <em>Centrum för rättvisa</em>, ”Årets svensk” 2013 – i dag Sveriges
+              justitieminister och huvudarkitekt bakom AI-accelererad polisverksamhet.
+          </p>
+        </div>
+        <div class="row g-2">
+          <div class="col-md-4 fade-in-on-scroll">
+              <div class="panel p-2">
+                  <div class="small text-uppercase">Bana</div>
+                  <div class="fw-bold">Medborgerliga friheter → AI-styrning</div>
+              </div>
+          </div>
+          <div class="col-md-4 fade-in-on-scroll">
+              <div class="panel p-2">
+                  <div class="small text-uppercase">Kameraoffensiven</div>
+                  <div class="fw-bold">500 → 5&nbsp;000</div>
+              </div>
+          </div>
+          <div class="col-md-4 fade-in-on-scroll">
+              <div class="panel p-2">
+                  <div class="small text-uppercase">AI-behörighet</div>
+                  <div class="fw-bold">Ansiktsigenkänning i realtid</div>
+              </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <article class="panel fade-in-on-scroll slide-in-left" id="summary">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="section-title fade-in-on-scroll">Sammanfattning</h2>
+          <span class="badge bg-light text-dark border">Strömmer-paradoxen</span>
+        </div>
+        <div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <p class="fade-in-on-scroll">
+                I två decennier var <strong class="profile-hover-trigger"><span id="gunnar-strommer-hover-2">Gunnar Strömmer</span><div class="profile-popout">
+                    <img src="../assets/images/gs.png" alt="Gunnar Strömmer" class="img-fluid mb-2">
+                    <h5>Gunnar Strömmer</h5>
+                    <p class="small">Justitieminister. Arkitekt bakom de omdiskuterade övervakningslagarna 2026.</p>
+                </div></strong> synonymt med att
+                staten måste begränsas. År 2002 grundade han
+                <em>Centrum för rättvisa</em>, en allmännyttig advokatbyrå som i domstol ofta
+                besegrade svenska staten och försvarade individer mot
+                övervakning och övertramp.
+              </p>
+              <p class="fade-in-on-scroll">
+                Som justitieminister sitter Strömmer nu på andra sidan bordet. Han driver
+                <strong>”kameraoffensiven”</strong> och ökar polisens kamerabestånd från
+                cirka 500 till 5&nbsp;000, samtidigt som han <strong>försvagar de skyddsregler</strong> han
+                en gång kallade omöjliga att ge upp.
+              </p>
+              <p class="alert alert-secondary small fade-in-on-scroll">
+                Denna POI visar hur en av Sveriges mest hyllade försvarare av integritet
+                blev arkitekten bakom ett <strong>realtidsbiometriskt inhägnande nät</strong>, och varför hans egen
+                seger i Strasbourg 2021 i dag kan läsas som bevis mot den nuvarande politiken.
+              </p>
+            </div>
+
+            <aside class="col-md-6">
+              <div class="deep-dive-box fade-in-on-scroll">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <div class="deep-dive-label small text-uppercase">Fördjupning</div>
+                  <button
+                    class="deep-dive-toggle btn btn-sm btn-outline-secondary"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#summaryDeepDiveMore"
+                    aria-expanded="false"
+                    aria-controls="summaryDeepDiveMore"
+                  >
+                    ▼
+                  </button>
+                </div>
+                <div class="small">
+                  <p class="fade-in-on-scroll mb-2">
+                      <strong>Gunnar Strömmer (född 1972)</strong> byggde sitt rykte på
+                      principen att staten måste begränsas. År 2002 grundade han
+                      <em>Centrum för rättvisa</em>, en ideell advokatbyrå som försvarade individer
+                      mot statligt övertramp. Han blev en hjälte för medborgerliga friheter och vann
+                      prejudikat i Högsta domstolen och Europadomstolen (ECHR). 2013 utsågs han till
+                      <em>”Årets svensk”</em> av <em>Fokus</em> för sitt arbete för rättsstaten.
+                  </p>
+                  <div id="summaryDeepDiveMore" class="collapse mt-1">
+                    <p class="fade-in-on-scroll mb-2">
+                      Det tydligaste beviset på Strömmers omsvängning är hans egen seger
+                      mot svenska staten i ECHR:
+                      <strong>Centrum för rättvisa mot Sverige (Grand Chamber, 25 maj 2021, ansökan 35252/08)</strong>.
+                      Organisationen stämde staten för massiv signalspaning
+                      (<strong>FRA-övervakning</strong>) och hävdade att <em>blotta risken</em> att övervakas
+                      kränkte artikel 8 (rätten till privatliv).
+                    </p>
+                    <p class="fade-in-on-scroll mb-0">
+                      I maj 2021 gick Grand Chamber Strömmers organisation till mötes.
+                      Domstolen fann att Sveriges övervakning saknade
+                      <strong>”tillräckliga skyddsåtgärder”</strong> och var <strong>”inte förutsägbar”</strong>. Viktigt var
+                      kravet på <strong>oberoende förhandsprövning</strong> och <strong>strikt proportionalitet</strong>
+                      innan övervakning aktiveras. Därmed skärps <strong>Strömmer-paradoxen</strong>: samma
+                      skydd som ECHR – på Strömmers initiativ – sade var obligatoriska är de han nu
+                      monterar ner.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div id="deep-dive" class="mt-4">
+            <div class="timeline-item position-relative ps-4 mb-3 fade-in-on-scroll">
+              <div class="timeline-node position-absolute top-0 start-0 translate-middle-x mt-1 rounded-circle" style="width: 1rem; height: 1rem;"></div>
+              <div class="small text-uppercase">2002 → 2013</div>
+              <div class="d-flex justify-content-between align-items-center gap-3">
+                <h3 class="subheading mb-0">Rättsstatsförespråkare</h3>
+                <img
+                  src="../assets/images/Centrum-for-rattvisa.png"
+                  alt="Centrum för rättvisa"
+                  class="img-fluid"
+                  style="max-height: 44px; width: auto;"
+                  loading="lazy"
+                />
+              </div>
+              <div class="small">
+                Grundade <em>Centrum för rättvisa</em>, vann prejudikat i Högsta domstolen
+                och Europadomstolen. Utsågs till <em>Årets svensk</em> 2013 för arbetet för rättsstaten.
+              </div>
+            </div>
+            <div class="timeline-item position-relative ps-4 mb-3 fade-in-on-scroll">
+              <div class="timeline-node position-absolute top-0 start-0 translate-middle-x mt-1 rounded-circle" style="width: 1rem; height: 1rem;"></div>
+              <div class="small text-uppercase">2013 → 2021</div>
+              <h3 class="subheading mb-0">Strasbourg-målet – ”kronjuvelen”</h3>
+              <div class="small">
+                Stämde svenska staten för massiv signalspaning (<strong>FRA-övervakning</strong>),
+                med argumentet att <em>blotta risken</em> att övervakas kränkte artikel 8
+                (privatliv). 2021 höll Grand Chamber med och fann att Sveriges övervakning saknade
+                ”tillräckliga skyddsåtgärder” och var ”inte förutsägbar”.
+              </div>
+            </div>
+            <div class="timeline-item position-relative ps-4 mb-3 fade-in-on-scroll">
+              <div class="timeline-node position-absolute top-0 start-0 translate-middle-x mt-1 bg-danger rounded-circle" style="width: 1rem; height: 1rem;"></div>
+              <div class="small text-uppercase">2024 → 2026</div>
+              <h3 class="subheading mb-0">Från skyddsregler till fullspektrumsskanning</h3>
+              <div class="small">
+                Som minister monterar Strömmer ner samma skydd han krävde i rätten:
+                borttaget IMY-tillstånd för kameror och realtids-AI för ansiktsigenkänning
+                med undantagsklausuler som kringgår domstolsprövning i förväg.
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep-dive accordion removed; content now lives in the grey box to the right -->
+        </div>
+      </article>
+
+      <section class="panel fade-in-on-scroll slide-in-right" id="case">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="h5 text-uppercase fade-in-on-scroll">Kronjuvelsmålet</h2>
+          <span class="badge bg-light text-dark border">Centrum för rättvisa mot Sverige</span>
+        </div>
+        <div class="panel-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <p class="fade-in-on-scroll">
+                ECHR-domen i <strong>Centrum för rättvisa mot Sverige (2021)</strong> är den juridiska
+                ryggraden i denna POI. Den fastslog en enkel regel:
+                <strong>massövervakning är förenlig med mänskliga rättigheter endast om strikta skyddsåtgärder finns innan systemet sätts på</strong>.
+              </p>
+
+              <div class="list-group">
+                <div class="list-group-item fade-in-on-scroll">
+                  <div class="small text-uppercase">Målet</div>
+                  <p class="mb-0">
+                    Strömmers organisation prövade svensk massiv signalspaning
+                    och hävdade att <em>blotta risken</em> att avlyssnas kyler integriteten och
+                    kränker artikel 8 – även om ingen enskild avlyssning kunde bevisas.
+                  </p>
+                </div>
+                <div class="list-group-item fade-in-on-scroll">
+                  <div class="small text-uppercase">Segern</div>
+                  <p class="mb-0">
+                    I maj 2021 fann Grand Chamber att Sveriges övervakning saknade
+                    <strong>”tillräckliga skyddsåtgärder”</strong> och var <strong>”inte förutsägbar”</strong>. Domen
+                    krävde oberoende tillsyn och tydliga, i förväg definierade gränser.
+                  </p>
+                </div>
+                <div class="list-group-item fade-in-on-scroll" id="reversal">
+                  <div class="small text-uppercase">Paradoxen</div>
+                  <p class="mb-0">
+                    De skydd som Strömmer övertygade Strasbourg om – bland annat
+                    <strong>oberoende förhandsprövning</strong> och <strong>strikta nödvändighetskrav</strong> – är
+                    samma skydd han nu som justitieminister försvagar eller tar bort.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <aside class="col-md-6">
+              <div class="deep-dive-box fade-in-on-scroll">
+                <div class="deep-dive-label small text-uppercase mb-1">Fördjupning</div>
+                <p class="mb-0 small">
+                  2021 visade Strömmer att övervakning utan domare kränker
+                  mänskliga rättigheter. 2024–2026 utformar han ett system där
+                  <strong>domaren tyst skrivs ur regelverket</strong>.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-left" id="betrayal">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="h5 text-uppercase fade-in-on-scroll">Brytningen 2026</h2>
+          <span class="badge bg-light text-dark border">Prop. 2025/26:150</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            Den mest radikala brytningen mot Strömmers tidigare principer kommer med
+            <strong>Prop. 2025/26:150</strong>, inlämnad i mars 2026. Lagen tillåter
+            polisen att använda <strong>AI för ansiktsigenkänning i realtid</strong> – och förvandlar folkmassor till
+            sökbara dataset.
+          </p>
+          <!-- Cameras & drones graph (Recharts) -->
+          <div id="poi-chart-root"></div>
+          <p class="fade-in-on-scroll">
+            Enligt lagen får polisen <strong>skanna varje ansikte i en folkmassa</strong> och matcha
+            mot bevakningslistor i realtid. Klausulen <strong>”fara i dröjsmål”</strong>
+            tillåter att domstolsprövning kringgås de första 24 timmarna –
+            <strong>i direkt strid</strong> med den strikta förhandsprövningsmodell Strömmer
+            försvarade i Strasbourg.
+          </p>
+          <p class="alert alert-secondary small fade-in-on-scroll">
+            Där advokatbyrån en gång hävdade att staten <em>inte</em> får ha ”obegränsad
+            makt” att avlyssna, bygger departementet nu ett system där
+            <strong>ansikten, rörelser och umgänge</strong> kan spåras innan någon domare hunnit ingripa.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel fade-in-on-scroll slide-in-right" id="secrecy">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+          <h2 class="h5 text-uppercase fade-in-on-scroll">Sekretess som politik</h2>
+          <span class="badge bg-light text-dark border">Transparensglappet</span>
+        </div>
+        <div class="panel-body">
+          <p class="fade-in-on-scroll">
+            Strömmers övervakningsagenda är inte bara omfattande – den är också
+            <strong>medvetet ogenomskinlig</strong>. Sekretesslagar (<em>sekretess</em>) används för att stoppa
+            riksdagens granskning av AI-system som <strong>Palantir / Acus</strong>.
+          </p>
+          <p class="fade-in-on-scroll">
+            I <strong>Interpellation 2025/26:301</strong> framkom att även riksdagsledamöter nekas tillgång till
+            avtalen om hur denna AI analyserar medborgardata. Resultatet blir ett <strong>transparensglapp</strong>:
+          </p>
+          <ul class="list-unstyled small fade-in-on-scroll">
+            <li>Staten kräver <strong>total insyn</strong> i medborgaren.</li>
+            <li>
+              Medborgaren (och hennes företrädare) nekas insyn i statens
+              automatiserade beslutsfattande.
+            </li>
+          </ul>
+          <p class="alert alert-secondary small fade-in-on-scroll">
+            Internationella observatörer har reagerat. I skuggrapporten till FN:s
+            människorättsråd (2025/2026) varnar <strong>Civil Rights Defenders</strong> för att Sveriges
+            nya AI-drivna polisarkitektur riskerar att undergräva just de mänskliga rättigheter
+            Strömmer en gång åberopade i Strasbourg.
+          </p>
+        </div>
+      </section>
+
+      <!-- SOURCES & FOOTER -->
+      <section class="mt-4 d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-wrap gap-2" aria-label="Källor i korthet">
+          <span class="badge bg-light text-dark border">1. Fokus (2013)</span>
+          <span class="badge bg-light text-dark border">2. ECHR (2021)</span>
+          <span class="badge bg-light text-dark border">3. Prop. 2024/25:93</span>
+        </div>
+        <div>
+          <button class="btn btn-outline-secondary" id="openSourcesBottom">
+            Öppna fullständig källista
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+  </div>
+
+  <!-- Footer (regeringen.se-style) -->
+  <footer class="footer--page">
+    <div class="footer--page__bar">
+      <div class="container">
+        <div class="row py-4 g-4">
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Innehåll</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="index.html">Startsida</a></li>
+              <li><a href="poi-1.html">POI 1</a></li>
+              <li><a href="poi-2.html">Kameraoffensiven</a></li>
+              <li><a href="poi-3.html">Biometri</a></li>
+              <li><a href="poi-4.html">Palantir / Acus</a></li>
+              <li><a href="poi-5.html">Kylande effekten</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="poi-final.html">Slutsats</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Projekt</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="home.html">Hem</a></li>
+              <li><a href="poi-1.html">POI 1 · Ministerns hem</a></li>
+              <li><a href="poi-2.html">Kameragriden</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="poi-final.html">Streckkodsstaden</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Kontakt</h2>
+            <p class="footer--page__address">Regeringskansliet<br>103 33 Stockholm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer--page__senderinfo">
+      <div class="container py-3">
+        <div class="d-flex flex-wrap align-items-center gap-3 justify-content-between">
+          <a href="index.html" class="rk-logo rk-logo--footer text-decoration-none" aria-label="Gå till startsidan">
+            <div class="rk-logo-mark" aria-hidden="true"></div>
+            <div class="rk-logo-text">
+              <div class="rk-logo-title">Regeringskansliet · Projekt</div>
+            </div>
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <p class="mb-0 small text-muted">Insiktspunkter · Stockholm 2026</p>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-accept-cookies">Acceptera cookies</button>
+              <a class="btn btn-sm btn-outline-secondary" href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" class="d-none"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'sv',
+          includedLanguages: 'en',
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
+    }
+
+    function translateToEnglish() {
+      var combo = document.querySelector('#google_translate_element select');
+      if (!combo) return;
+      combo.value = 'en';
+      combo.dispatchEvent(new Event('change'));
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="sourcesModal" tabindex="-1" aria-labelledby="sourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sourcesModalLabel">Källöversikt · POI 1</h5>
+          <button type="button" class="btn-close" id="closeSources" aria-label="Stäng"></button>
+        </div>
+        <div class="modal-body">
+            <div class="border-bottom pb-2 mb-2">
+                <div class="small text-uppercase">[1] Strömmers bakgrund</div>
+                <p><strong>Fokus (2013)</strong>, ”<em>Årets svensk: Gunnar Strömmer</em>.” Porträtt av Strömmers arbete vid <em>Centrum för rättvisa</em> och hans roll för rättsstaten i Sverige.</p>
+            </div>
+            <div class="border-bottom pb-2 mb-2">
+                <div class="small text-uppercase">[2] ECHR-målet</div>
+                <p><strong>Centrum för rättvisa mot Sverige</strong>, Grand Chamber-dom 25 maj 2021 (ansökan 35252/08). ”Kronjuvelsmålet” som fastslår att massövervakning utan strikta skyddsåtgärder kränker artikel 8 (privatliv).</p>
+            </div>
+            <div class="border-bottom pb-2 mb-2">
+                <div class="small text-uppercase">[3] Borttaget IMY-tillstånd</div>
+                <p><strong>Regeringens proposition 2024/25:93</strong>, ”<em>Bättre verktyg i kampen mot kriminella nätverk</em>.” Inför <strong>kameraoffensiven</strong> och tar bort kravet på tillstånd från <em>Integritetsskyddsmyndigheten (IMY)</em> innan kameror sätts upp.</p>
+            </div>
+            <div class="border-bottom pb-2 mb-2">
+                <div class="small text-uppercase">[4] AI och ansiktsigenkänning i realtid</div>
+                <p><strong>Regeringens proposition 2025/26:150</strong>, ”<em>Polisens användning av AI för ansiktsigenkänning i realtid</em>.” Tillåter realtids-AI för ansiktsigenkänning och inför klausulen <strong>fara i dröjsmål</strong> som tillåter 24 timmars drift utan domstolsprövning i förväg.</p>
+            </div>
+            <div class="border-bottom pb-2 mb-2">
+                <div class="small text-uppercase">[5] Palantir och sekretess</div>
+                <p><strong>Riksdagen, interpellation 2025/26:301</strong>, ”<em>Användningen av analysplattformen Palantir</em>.” Visar att även riksdagsledamöter nekas tillgång till avtal om hur plattformen behandlar medborgardata.</p>
+            </div>
+            <div>
+                <div class="small text-uppercase">[6] FN-kritik</div>
+                <p><strong>Civil Rights Defenders (2025/2026)</strong>, skuggrapport till FN:s människorättsråd om Sverige. Lyfter oro för den växande övervakningsarkitekturen och förenligheten med internationella människorättsstandarder.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image modal -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Skärmbild</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Stäng"></button>
+        </div>
+        <div class="modal-body">
+          <img id="imageModalImg" src="" alt="" class="img-fluid w-100" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script>
+    (function () {
+      var imageModal = document.getElementById('imageModal');
+      var imageEl = document.getElementById('imageModalImg');
+      var titleEl = document.getElementById('imageModalLabel');
+      if (!imageModal || !imageEl || !titleEl) return;
+
+      imageModal.addEventListener('show.bs.modal', function (event) {
+        var trigger = event.relatedTarget;
+        if (!trigger) return;
+        var src = trigger.getAttribute('data-img') || '';
+        var alt = trigger.getAttribute('data-alt') || 'Skärmbild';
+        imageEl.src = src;
+        imageEl.alt = alt;
+        titleEl.textContent = alt;
+      });
+
+      imageModal.addEventListener('hidden.bs.modal', function () {
+        imageEl.src = '';
+        imageEl.alt = '';
+      });
+    })();
+  </script>
+
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="../scripts/poi-header-logout.js"></script>
+  <script src="../scripts/script.js"></script>
+  <script src="../scripts/cookie-consent.js"></script>
+</body>
+</html>
