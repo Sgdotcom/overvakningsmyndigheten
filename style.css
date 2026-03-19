@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800;900&display=swap');
+
 /* Custom Styles – regeringen.se font-size scale (100% = 16px base) */
 html {
     font-size: 100%;
@@ -30,9 +32,16 @@ body {
     overflow-x: hidden;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.875rem;  /* 14px – regeringen.se base */
     line-height: 1.43;
+}
+
+/* Enforce Open Sans across all UI elements */
+*,
+*::before,
+*::after {
+    font-family: 'Open Sans', sans-serif;
 }
 @media (min-width: 30em) {
     body {
@@ -168,7 +177,7 @@ body {
 
 .ip-ataglance-val {
     font-size: 0.82rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: 'Open Sans', sans-serif;
     text-align: right;
     word-break: break-word;
 }
@@ -212,7 +221,7 @@ body {
 
 .ip-kv-val {
     font-size: 0.85rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: 'Open Sans', sans-serif;
     word-break: break-word;
 }
 
@@ -683,6 +692,12 @@ body {
     text-decoration: underline;
 }
 
+.rk-toplink.is-listening {
+    color: var(--color-Basbla);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
 /* Primary bar: white brand band with logo + search */
 .rk-main {
     padding: 1.3rem 0;
@@ -787,6 +802,63 @@ button.rk-search-button {
     flex: 1 1 auto;
     min-width: 0;
     max-width: none;
+}
+
+.rk-search-results {
+    width: 100%;
+    margin-top: 0.45rem;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    max-height: 20rem;
+    overflow: auto;
+}
+
+.rk-search-results__header {
+    padding: 0.5rem 0.65rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-muted-color);
+    background: var(--color-Gra1);
+}
+
+.rk-search-results__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.rk-search-results__item + .rk-search-results__item {
+    border-top: 1px solid var(--border-color);
+}
+
+.rk-search-results__link {
+    display: block;
+    padding: 0.6rem 0.65rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.rk-search-results__link:hover {
+    background: var(--color-Gra1);
+}
+
+.rk-search-results__meta {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.78rem;
+    color: var(--text-muted-color);
+}
+
+.rk-search-results__snippet {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.rk-search-results__empty {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    color: var(--text-muted-color);
 }
 
 @media (min-width: 768px) {
@@ -1110,7 +1182,7 @@ button.rk-login-header-btn:active {
 }
 
 .facescan-loading__text {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.15em;

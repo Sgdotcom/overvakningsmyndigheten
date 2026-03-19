@@ -26,14 +26,15 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        pagesIndex: 'pages/index.html',
         poi1: 'pages/poi-1.html',
         poi2: 'pages/poi-2.html',
         poi3: 'pages/poi-3.html',
         poi4: 'pages/poi-4.html',
         poi5: 'pages/poi-5.html',
         poi6: 'pages/poi-6.html',
-        poiFinal: 'pages/poi-final.html',
         summary: 'pages/summary.html',
+        sources: 'pages/sources.html',
         terms: 'pages/terms.html',
       },
     },
