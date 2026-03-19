@@ -4,7 +4,6 @@ import { collectFingerprint } from './collectors/fingerprint.js';
 import { startBehaviorCollectors } from './collectors/behavior.js';
 import { collectStorageBreadcrumbs } from './collectors/storage.js';
 import { collectLoginSniffing } from './collectors/loginSniffing.js';
-import { defaultHstsConfig, readHstsBits } from './collectors/hstsSupercookie.js';
 import { inferProfile } from './inference.js';
 import { stopBehaviorCollectors } from './collectors/behavior.js';
 import { purgeStorageBreadcrumbs } from './collectors/storage.js';
@@ -71,24 +70,6 @@ export async function startCollectors() {
           supported: !!window.OfflineAudioContext,
           enabled: false,
           note: 'Enable “invasive signals” to run audio fingerprinting.',
-        },
-      });
-    }
-  } catch (e) {
-    pushError(e);
-  }
-
-  // HSTS: only reads if configured (enabled + baseDomain + subdomains).
-  try {
-    const cfg = (state.hsts && state.hsts.cfg) || defaultHstsConfig();
-    if (cfg && cfg.enabled) {
-      setState({ hsts: { cfg } });
-      readHstsBits(cfg).catch(pushError);
-    } else {
-      setState({
-        hsts: {
-          cfg,
-          note: 'Configure subdomains + HTTPS to enable a real HSTS supercookie demo.',
         },
       });
     }
@@ -173,13 +154,6 @@ export function purgeAll() {
     behavior: null,
     storage: null,
     loginSniffing: null,
-    hsts: state.hsts
-      ? {
-          ...state.hsts,
-          note:
-            'Note: HSTS is managed by the browser. JavaScript cannot reliably clear it. Use browser site-data/HSTS settings to fully reset.',
-        }
-      : null,
     audioFingerprint: null,
     inference: null,
     errors: [],

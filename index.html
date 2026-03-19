@@ -71,6 +71,7 @@
           <a href="pages/poi-4.html" class="rk-nav-link">Palantir / Acus</a>
           <a href="pages/poi-5.html" class="rk-nav-link">Kylande effekten</a>
           <a href="pages/poi-6.html" class="rk-nav-link">Övervakningskapitalism</a>
+          <a href="pages/live-feed.html" class="rk-nav-link">Ansiktigenkänning</a>
           <a href="pages/summary.html" class="rk-nav-link">Sammanfattning</a>
         </nav>
       </div>
@@ -88,8 +89,23 @@
           <span class="badge bg-primary">Startsida</span>
         </div>
         <h1 id="hero-title" class="display-5 fade-in-on-scroll">
-          Insiktspunkter: <span class="text-primary">Stockholm 2026</span>
+          Övervakningsmyndigheten
         </h1>
+        <p class="small text-muted mb-3" id="index-datetime"></p>
+        <script>
+          (function () {
+            var el = document.getElementById('index-datetime');
+            if (!el) return;
+            var d = new Date();
+            el.textContent = d.toLocaleString('sv-SE', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+            });
+          })();
+        </script>
         <p class="lead fade-in-on-scroll">
           Övriga sidor är låsta tills du har loggat in via <strong>Logga in</strong> uppe till höger (kamera och
           ansiktsspårning i popup).
@@ -99,14 +115,14 @@
       <!-- FACESCAN livestream (always visible, below Insiktspunkter, above Din Data) -->
       <section class="facescan-section fade-in-on-scroll slide-in-right" id="facescan-live" aria-labelledby="facescan-live-title">
         <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2 mb-2">
-          <h2 class="section-title mb-0" id="facescan-live-title">FACESCAN Livestream</h2>
+          <a class="section-title mb-0 text-decoration-none" id="facescan-live-title" href="pages/live-feed.html">Ansiktigenkänning</a>
           <span class="badge bg-light text-dark border">Live</span>
         </div>
         <div class="facescan-frame" id="facescan-frame">
           <iframe
             id="facescan-iframe"
             src="https://rules-mainstream-nathan-poetry.trycloudflare.com/facescan?autoplay=1&muted=1"
-            title="FACESCAN livestream"
+            title="Ansiktigenkänning"
             allowfullscreen
             allow="autoplay; camera"
           ></iframe>
@@ -129,14 +145,6 @@
       </section>
 
       <div id="gated-after-login" class="d-none">
-        <section class="hero fade-in-on-scroll slide-in-left is-visible py-3">
-          <div class="d-flex flex-wrap gap-2">
-            <a class="btn btn-primary" href="pages/poi-1.html">Öppna POI 1</a>
-            <a class="btn btn-outline-secondary" href="pages/poi-2.html">Kameraoffensiven</a>
-            <a class="btn btn-outline-secondary" href="pages/summary.html">Sammanfattning</a>
-          </div>
-        </section>
-
         <section class="panel fade-in-on-scroll slide-in-right" id="contents">
           <div class="d-flex justify-content-between align-items-baseline mb-2">
             <h2 class="section-title fade-in-on-scroll">Innehåll</h2>
@@ -174,6 +182,7 @@
               <li><a href="pages/poi-4.html">Palantir / Acus</a></li>
               <li><a href="pages/poi-5.html">Kylande effekten</a></li>
               <li><a href="pages/poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="pages/live-feed.html">Ansiktigenkänning</a></li>
               <li><a href="pages/summary.html">Sammanfattning</a></li>
             </ul>
           </div>
@@ -199,7 +208,7 @@
           <a href="index.html" class="rk-logo rk-logo--footer text-decoration-none" aria-label="Gå till startsidan">
             <div class="rk-logo-mark" aria-hidden="true"></div>
             <div class="rk-logo-text">
-              <div class="rk-logo-title">Regeringskansliet · Projekt</div>
+              <div class="rk-logo-title">Övervakningsmyndigheten · Projekt</div>
             </div>
           </a>
           <div class="d-flex flex-wrap align-items-center gap-3">

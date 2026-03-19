@@ -19,7 +19,6 @@ export const state = {
   behavior: null,
   storage: null,
   loginSniffing: null,
-  hsts: null,
   audioFingerprint: null,
   inference: null,
   errors: [],

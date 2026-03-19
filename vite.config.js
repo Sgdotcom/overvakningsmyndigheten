@@ -35,6 +35,7 @@ export default defineConfig({
         poi6: 'pages/poi-6.html',
         summary: 'pages/summary.html',
         sources: 'pages/sources.html',
+        liveFeed: 'pages/live-feed.html',
         terms: 'pages/terms.html',
       },
     },

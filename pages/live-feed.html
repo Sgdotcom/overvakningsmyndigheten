@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live feed · Ansiktsigenkänning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <a id="skip-to-content" class="skip-to-content" href="#content">Hoppa till huvudinnehåll</a>
+
+  <header class="rk-header">
+    <div class="rk-main">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center rk-main-row">
+          <a href="index.html" class="rk-logo text-decoration-none" aria-label="Gå till startsidan">
+            <img src="../assets/images/övmyndigheten.png" alt="Övervakningsmyndigheten" class="rk-logo-img">
+          </a>
+          <div class="d-flex flex-column align-items-end gap-1 rk-main-right">
+            <div class="d-flex flex-wrap gap-2 gap-md-3 rk-toplinks-row align-items-center justify-content-end">
+              <button class="rk-toplink" type="button">Lyssna</button>
+              <button class="rk-toplink" type="button">Lättläst</button>
+              <button class="rk-toplink" type="button">Teckenspråk</button>
+              <button class="rk-toplink" type="button" onclick="translateToEnglish()">Engelska</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rk-navbar">
+      <div class="container">
+        <nav class="rk-nav d-flex gap-3" aria-label="Huvudnavigering">
+          <a href="index.html" class="rk-nav-link">Startsida</a>
+          <a href="poi-1.html" class="rk-nav-link">Ministern</a>
+          <a href="poi-2.html" class="rk-nav-link">Kameraoffensiven</a>
+          <a href="poi-3.html" class="rk-nav-link">Biometri</a>
+          <a href="poi-4.html" class="rk-nav-link">Palantir / Acus</a>
+          <a href="poi-5.html" class="rk-nav-link">Kylande effekten</a>
+          <a href="poi-6.html" class="rk-nav-link">Övervakningskapitalism</a>
+          <a href="live-feed.html" class="rk-nav-link">Ansiktigenkänning</a>
+          <a href="summary.html" class="rk-nav-link">Sammanfattning</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="pagecontainer">
+    <div class="container container--main my-4">
+      <main id="content" class="col-md-10 offset-md-1" tabindex="-1">
+        <section class="facescan-section fade-in-on-scroll slide-in-right is-visible" id="facescan-live" aria-labelledby="facescan-live-title">
+          <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2 mb-2">
+            <h2 class="section-title mb-0" id="facescan-live-title">Ansiktsigenkänning</h2>
+            <span class="badge bg-light text-dark border">Live</span>
+          </div>
+
+          <div class="facescan-frame" id="facescan-frame">
+            <iframe
+              id="facescan-iframe"
+              src="https://rules-mainstream-nathan-poetry.trycloudflare.com/facescan?autoplay=1&muted=1"
+              title="Ansiktigenkänning"
+              allowfullscreen
+              allow="autoplay; camera"
+            ></iframe>
+
+            <!-- Loading overlay -->
+            <div id="facescan-loading" class="facescan-loading">
+              <span class="facescan-loading__text">INITIERAR FEED...</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Detection-only log (no identity stored) -->
+        <section class="panel mt-4" id="face-detection-panel">
+          <div class="d-flex justify-content-between align-items-baseline mb-2">
+            <h2 class="section-title mb-0">Ansiktsdetektering</h2>
+            <span class="badge bg-light text-dark border">Endast närvaro</span>
+          </div>
+          <div class="panel-body">
+            <p class="mb-2">
+              Senaste: <span id="face-detection-latest">—</span>
+            </p>
+            <p class="mb-2">
+              Status: <strong id="face-detection-status">Väntar på data…</strong>
+            </p>
+            <div class="small text-muted mb-2">Händelser (senaste 20)</div>
+            <ul id="face-detection-log" class="list-unstyled mb-0"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer--page">
+    <div class="footer--page__bar">
+      <div class="container">
+        <div class="row py-4 g-4">
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Innehåll</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="index.html">Startsida</a></li>
+              <li><a href="poi-1.html">Ministern</a></li>
+              <li><a href="poi-2.html">Kameraoffensiven</a></li>
+              <li><a href="poi-3.html">Biometri</a></li>
+              <li><a href="poi-4.html">Palantir / Acus</a></li>
+              <li><a href="poi-5.html">Kylande effekten</a></li>
+              <li><a href="poi-6.html">Övervakningskapitalism</a></li>
+              <li><a href="live-feed.html">Ansiktigenkänning</a></li>
+              <li><a href="summary.html">Sammanfattning</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Projekt</h2>
+            <ul class="list-unstyled footer--page__links">
+              <li><a href="index.html">Hem</a></li>
+              <li><a href="summary.html">Sammanfattning</a></li>
+              <li><a href="sources.html">Källor</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="footer--page__heading">Kontakt</h2>
+            <p class="footer--page__address">Övervakningsmyndigheten<br>103 33 Stockholm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer--page__senderinfo">
+      <div class="container py-3">
+        <div class="d-flex flex-wrap align-items-center gap-3 justify-content-between">
+          <a href="index.html" class="rk-logo rk-logo--footer text-decoration-none" aria-label="Gå till startsidan">
+            <div class="rk-logo-mark" aria-hidden="true"></div>
+            <div class="rk-logo-text">
+              <div class="rk-logo-title">Övervakningsmyndigheten · Projekt</div>
+            </div>
+          </a>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <p class="mb-0 small text-muted">Insiktspunkter · Stockholm 2026</p>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-accept-cookies">Acceptera cookies</button>
+              <a class="btn btn-sm btn-outline-secondary" href="terms.html">Terms of Service</a>
+              <a class="btn btn-sm btn-outline-secondary" href="sources.html">Källor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FACESCAN loading overlay dismiss (same logic as the homepage)
+    (function () {
+      var iframe = document.getElementById('facescan-iframe');
+      var overlay = document.getElementById('facescan-loading');
+      if (!iframe || !overlay) return;
+
+      function dismiss() {
+        overlay.classList.add('is-hidden');
+      }
+
+      iframe.addEventListener('load', function () {
+        setTimeout(dismiss, 800);
+      });
+      setTimeout(dismiss, 4000); // fallback
+    })();
+  </script>
+
+  <script>
+    // Listen for detection-only messages from the VPS stream app (iframe).
+    // Expected payload shape (example):
+    // { type: 'face-detections', ts: Date.now(), detected: true, faceCount: 2, boxes: [{x,y,w,h,score}] }
+    (function () {
+      var iframe = document.getElementById('facescan-iframe');
+      var latestEl = document.getElementById('face-detection-latest');
+      var statusEl = document.getElementById('face-detection-status');
+      var logEl = document.getElementById('face-detection-log');
+      if (!iframe || !latestEl || !statusEl || !logEl) return;
+
+      var MAX_ITEMS = 20;
+      var items = [];
+
+      function fmtTs(ts) {
+        try {
+          var d = ts ? new Date(ts) : new Date();
+          return d.toLocaleString('sv-SE', { hour: '2-digit', minute: '2-digit', second: '2-digit', year: 'numeric', month: 'short', day: '2-digit' });
+        } catch (e) {
+          return '—';
+        }
+      }
+
+      function addItem(ts, detected, faceCount) {
+        var label = detected ? 'Ansikte upptäckt' : 'Inga ansikten';
+        var line = label + (typeof faceCount === 'number' ? ' (' + faceCount + ')' : '');
+        items.unshift({ ts: ts, text: line });
+        items = items.slice(0, MAX_ITEMS);
+
+        logEl.innerHTML = items
+          .map(function (it) {
+            return '<li class="mb-1"><span class="text-muted small">' + fmtTs(it.ts) + '</span><br>' + it.text + '</li>';
+          })
+          .join('');
+      }
+
+      window.addEventListener('message', function (event) {
+        // Only accept messages coming from the embedded iframe.
+        if (event.source !== iframe.contentWindow) return;
+
+        var data = event.data;
+        if (!data || typeof data !== 'object') return;
+
+        // Support a couple common type names to make integration easier.
+        var type = data.type || data.messageType || '';
+        if (type !== 'face-detections' && type !== 'faceDetection' && type !== 'faces-detected') return;
+
+        var ts = typeof data.ts === 'number' ? data.ts : Date.now();
+        var faceCount = typeof data.faceCount === 'number' ? data.faceCount : (Array.isArray(data.boxes) ? data.boxes.length : 0);
+        var detected = typeof data.detected === 'boolean' ? data.detected : faceCount > 0;
+
+        latestEl.textContent = fmtTs(ts);
+        statusEl.textContent = detected ? ('Upptäckt (' + faceCount + ')') : 'Inget upptäckt';
+        addItem(ts, detected, faceCount);
+      });
+    })();
+  </script>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" class="d-none"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'sv',
+          includedLanguages: 'en',
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
+    }
+
+    function translateToEnglish() {
+      var combo = document.querySelector('#google_translate_element select');
+      if (!combo) return;
+      combo.value = 'en';
+      combo.dispatchEvent(new Event('change'));
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Cookie consent + shared UI (Lyssna, search, etc.) -->
+  <script src="../scripts/cookie-consent.js"></script>
+  <script src="../scripts/script.js"></script>
+</body>
+</html>
+

@@ -1,7 +1,5 @@
 import { state, subscribe, setState } from './state.js';
 import { startCollectors } from './workers.js';
-import { mockOidcClaims } from './collectors/identityMock.js';
-import { primeHstsBits, readHstsBits } from './collectors/hstsSupercookie.js';
 import { purgeAll } from './workers.js';
 import { requestGeolocation } from './collectors/permissions.js';
 import { setState as setGlobalState } from './state.js';
@@ -57,24 +55,9 @@ function friendlyList(items) {
 }
 
 function sectionContent({ sectionKey, summaryItems, techObj }) {
-  const kids = [friendlyList(summaryItems)];
-  if (techObj) {
-    const k = `tech:${sectionKey || 'unknown'}`;
-    const remembered = techOpenState.has(k) ? techOpenState.get(k) : null;
-    kids.push(
-      (() => {
-        const node = el('details', { class: 'ip-tech', open: remembered ? 'open' : null }, [
-          el('summary', { class: 'ip-tech-summary', text: 'Technical details' }),
-          el('div', { class: 'ip-tech-body' }, [renderKV(techObj)]),
-        ]);
-        node.addEventListener('toggle', () => {
-          techOpenState.set(k, node.open);
-        });
-        return node;
-      })()
-    );
-  }
-  return el('div', { class: 'ip-section-content' }, kids);
+  // Intentionally keep this view simple for non-technical users:
+  // show only the human-readable summary items (no "Technical details" expansion).
+  return el('div', { class: 'ip-section-content' }, [friendlyList(summaryItems)]);
 }
 
 function pill(text, kind = 'low') {
@@ -95,7 +78,6 @@ function section(title, riskKind, helpText, contentNode, { open = false } = {}) 
   const node = el('details', { class: 'ip-section', open: isOpen ? 'open' : null }, [
     el('summary', { class: 'ip-section-summary' }, [
       el('span', { class: 'ip-section-title', text: title }),
-      pill(riskKind === 'high' ? 'High risk' : riskKind === 'med' ? 'Medium risk' : 'Low risk', riskKind),
     ]),
     el('div', { class: 'ip-section-help', text: helpText }),
     el('div', { class: 'ip-section-body' }, [contentNode]),
@@ -134,40 +116,25 @@ function render(root) {
           purgeAll();
         },
       },
-      [document.createTextNode('Purge all data')]
+      [document.createTextNode('Rensa allt')]
     ),
   ]);
 
   const userView = el('div', { class: 'ip-user' }, [
-    el('h3', { class: 'h6 text-uppercase small text-muted mb-2', text: 'User view' }),
+    el('h3', { class: 'h6 text-uppercase small text-muted mb-2', text: 'Översikt' }),
     el('p', { class: 'mb-2' }, [
       document.createTextNode(
         started
-          ? 'Demo is running. Interact with the page to generate behavioral signals.'
+          ? 'Insamlingen pågår. Interagera gärna med sidan så uppdateras informationen.'
           : 'Acceptera cookies för att fortsätta.'
       ),
     ]),
     controls,
     el('hr', { class: 'my-3' }),
-    el('div', { class: 'ip-actions' }, [
-      el('div', { class: 'ip-action-title', text: 'Identity (mock OIDC)' }),
-      el('p', { class: 'small text-muted mb-2' }, [
-        document.createTextNode('Simulates a verified identity provider (BankID/MitID style) using OIDC-shaped claims.'),
-      ]),
-      el(
-        'button',
-        {
-          class: 'btn btn-outline-primary btn-sm',
-          type: 'button',
-          onclick: () => openIdentityModal(),
-        },
-        [document.createTextNode('Open mock login')]
-      ),
-    ]),
     el('div', { class: 'ip-actions mt-3' }, [
       el('div', { class: 'ip-action-title', text: 'Permissions & location' }),
       el('p', { class: 'small text-muted mb-2' }, [
-        document.createTextNode('Geolocation is collected automatically if already granted; otherwise you can request it here.'),
+        document.createTextNode('Exakt plats hämtas bara om du redan har gett plats-tillstånd. Annars kan du be om det här.'),
       ]),
       el('div', { class: 'ip-controls' }, [
         el(
@@ -180,75 +147,21 @@ function render(root) {
               await requestGeolocation();
             },
           },
-          [document.createTextNode('Request precise geolocation')]
-        ),
-      ]),
-    ]),
-    el('div', { class: 'ip-actions mt-3' }, [
-      el('div', { class: 'ip-action-title', text: 'Invasive signals' }),
-      el('p', { class: 'small text-muted mb-2' }, [
-        document.createTextNode('Enable extra invasive techniques (e.g. audio fingerprint).'),
-      ]),
-      el('label', { class: 'ip-toggle' }, [
-        el('input', {
-          type: 'checkbox',
-          checked: state.invasiveEnabled ? 'checked' : null,
-          onchange: (e) => {
-            setGlobalState({ invasiveEnabled: !!e.target.checked });
-            // If demo is already running, re-run collectors to pick up invasive-only ones.
-            if (state.started) startCollectors();
-          },
-        }),
-        el('span', { class: 'ip-toggle-text', text: 'Enable invasive signals' }),
-      ]),
-    ]),
-    el('div', { class: 'ip-actions mt-3' }, [
-      el('div', { class: 'ip-action-title', text: 'HSTS supercookie (real demo)' }),
-      el('p', { class: 'small text-muted mb-2' }, [
-        document.createTextNode(
-          'Requires HTTPS + configured subdomains. Prime sets HSTS by loading https://sub.domain/hsts.png; Read probes http://sub.domain/hsts.png.'
-        ),
-      ]),
-      el('div', { class: 'ip-controls' }, [
-        el(
-          'button',
-          {
-            class: 'btn btn-outline-light btn-sm',
-            type: 'button',
-            onclick: async () => {
-              const cfg = (state.hsts && state.hsts.cfg) || null;
-              if (!cfg || !cfg.enabled) return;
-              await primeHstsBits(cfg);
-            },
-          },
-          [document.createTextNode('Prime bits')]
-        ),
-        el(
-          'button',
-          {
-            class: 'btn btn-outline-light btn-sm',
-            type: 'button',
-            onclick: async () => {
-              const cfg = (state.hsts && state.hsts.cfg) || null;
-              if (!cfg || !cfg.enabled) return;
-              await readHstsBits(cfg);
-            },
-          },
-          [document.createTextNode('Read bits')]
+          [document.createTextNode('Begär exakt plats')]
         ),
       ]),
     ]),
     el('div', { class: 'ip-user-note small text-muted mt-2' }, [
       document.createTextNode(
-        'This demo collects and displays signals in your browser session. It is intentionally invasive by design.'
+        'Det här är en demo som visar vilka typer av signaler din webbläsare kan skicka. Den används endast i din webbläsare.'
       ),
     ]),
   ]);
 
   const dossier = el('div', { class: 'ip-dossier' }, [
     el('div', { class: 'ip-dossier-header' }, [
-      el('h3', { class: 'h6 text-uppercase small text-muted mb-0', text: 'Dossier (live)' }),
-      el('div', { class: 'ip-pill', text: started ? 'Collecting' : 'Idle' }),
+      el('h3', { class: 'h6 text-uppercase small text-muted mb-0', text: 'Din data' }),
+      el('div', { class: 'ip-pill', text: started ? 'Samlar in' : 'Väntar' }),
     ]),
     el('div', { class: 'ip-dossier-body' }, [
       // At-a-glance
@@ -310,21 +223,6 @@ function render(root) {
           techObj: state.fingerprint,
         }),
         { open: true }
-      ),
-      section(
-        'Identity (mock verification)',
-        'med',
-        'A simulated “verified identity” response (OIDC-shaped claims).',
-        sectionContent({
-          sectionKey: 'identity',
-          summaryItems: [
-            `Legal name: ${fmt(state.identity?.name)}`,
-            `Birthdate: ${fmt(state.identity?.birthdate)}`,
-            `18+ verified: ${yn(state.identity?.age_verified_18)}`,
-            `PIN/SSN (masked): ${fmt(state.identity?.pin_masked)}`,
-          ],
-          techObj: state.identity,
-        })
       ),
       section(
         'Page context',
@@ -458,33 +356,7 @@ function render(root) {
           techObj: state.loginSniffing,
         })
       ),
-      section(
-        'HSTS supercookie',
-        'high',
-        'Encodes bits via HSTS state across subdomains. Requires HTTPS + server configuration.',
-        sectionContent({
-          sectionKey: 'hsts',
-          summaryItems: [
-            `Configured: ${state.hsts?.cfg?.enabled ? 'Yes' : 'No'}`,
-            `Bits read: ${fmt(state.hsts?.bits)}`,
-            state.hsts?.note ? state.hsts.note : '—',
-          ],
-          techObj: state.hsts,
-        })
-      ),
-      section(
-        'Audio fingerprint (invasive)',
-        'high',
-        'Hashes an OfflineAudioContext render. Only runs when invasive signals are enabled.',
-        sectionContent({
-          sectionKey: 'audioFingerprint',
-          summaryItems: [
-            `Enabled: ${yn(state.invasiveEnabled)}`,
-            `Fingerprint hash: ${state.audioFingerprint?.sha256 ? state.audioFingerprint.sha256.slice(0, 16) + '…' : '—'}`,
-          ],
-          techObj: state.audioFingerprint,
-        })
-      ),
+      // Invasive audio fingerprint section removed to keep the UI simpler.
     ]),
   ]);
 
@@ -500,75 +372,6 @@ export function mountInvisibleProfile(root) {
   render(root);
   subscribe(() => render(root));
 }
-
-function openIdentityModal() {
-  const modal = document.getElementById('ip-identity-modal');
-  if (!modal) return;
-  modal.classList.add('ip-modal--open');
-  const first = modal.querySelector('input');
-  if (first) first.focus();
-}
-
-function closeIdentityModal() {
-  const modal = document.getElementById('ip-identity-modal');
-  if (!modal) return;
-  modal.classList.remove('ip-modal--open');
-}
-
-// Lightweight modal (no bootstrap dependency)
-function ensureIdentityModal() {
-  if (document.getElementById('ip-identity-modal')) return;
-
-  const modal = el('div', { id: 'ip-identity-modal', class: 'ip-modal', role: 'dialog', 'aria-modal': 'true' }, [
-    el('div', { class: 'ip-modal-backdrop', onclick: closeIdentityModal }),
-    el('div', { class: 'ip-modal-card' }, [
-      el('div', { class: 'ip-modal-header' }, [
-        el('div', { class: 'ip-modal-title', text: 'Mock identity login (OIDC)' }),
-        el('button', { type: 'button', class: 'ip-modal-close', onclick: closeIdentityModal, 'aria-label': 'Close' }, [
-          document.createTextNode('×'),
-        ]),
-      ]),
-      el('div', { class: 'ip-modal-body' }, [
-        el('label', { class: 'form-label small mb-1', for: 'ip-name', text: 'Legal full name' }),
-        el('input', { id: 'ip-name', class: 'form-control form-control-sm mb-2', type: 'text', placeholder: 'Full name' }),
-        el('label', { class: 'form-label small mb-1', for: 'ip-birthdate', text: 'Birthdate' }),
-        el('input', { id: 'ip-birthdate', class: 'form-control form-control-sm mb-2', type: 'date' }),
-        el('label', { class: 'form-label small mb-1', for: 'ip-pin', text: 'PIN / SSN (demo)' }),
-        el('input', { id: 'ip-pin', class: 'form-control form-control-sm mb-3', type: 'text', inputmode: 'numeric', placeholder: 'YYYYMMDD-XXXX' }),
-        el('div', { class: 'd-flex gap-2' }, [
-          el(
-            'button',
-            {
-              type: 'button',
-              class: 'btn btn-primary btn-sm',
-              onclick: () => {
-                const name = document.getElementById('ip-name')?.value || '';
-                const birthdate = document.getElementById('ip-birthdate')?.value || '';
-                const pin = document.getElementById('ip-pin')?.value || '';
-                mockOidcClaims({ name, birthdate, pin });
-                closeIdentityModal();
-              },
-            },
-            [document.createTextNode('Issue claims')]
-          ),
-          el('button', { type: 'button', class: 'btn btn-outline-secondary btn-sm', onclick: closeIdentityModal }, [
-            document.createTextNode('Cancel'),
-          ]),
-        ]),
-        el('p', { class: 'small text-muted mt-2 mb-0' }, [
-          document.createTextNode('This is a simulation. No real BankID/MitID verification happens here.'),
-        ]),
-      ]),
-    ]),
-  ]);
-
-  document.body.appendChild(modal);
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeIdentityModal();
-  });
-}
-
-ensureIdentityModal();
 
 // Allow external consent UI (footer/banner) to trigger start.
 window.addEventListener('ip-consent-accepted', () => {
