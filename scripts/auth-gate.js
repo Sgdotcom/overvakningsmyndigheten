@@ -23,7 +23,7 @@
 
   function redirect() {
     var next = encodeURIComponent(file);
-    location.replace('index.html?next=' + next);
+    location.replace('../index.html?next=' + next);
   }
 
   try {

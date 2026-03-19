@@ -21,11 +21,11 @@ function copyScripts() {
 export default defineConfig({
   plugins: [react(), copyScripts()],
   root: '.',
-  base: '/overvakningsmyndigheten/',
+  base: '/',
   build: {
     rollupOptions: {
       input: {
-        main: 'pages/index.html',
+        main: 'index.html',
         poi1: 'pages/poi-1.html',
         poi2: 'pages/poi-2.html',
         poi3: 'pages/poi-3.html',

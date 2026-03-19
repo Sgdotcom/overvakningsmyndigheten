@@ -354,7 +354,7 @@
       btnHeaderLogout.addEventListener('click', function () {
         sessionStorage.removeItem(SESSION_KEY);
         stopCamera();
-        location.href = 'index.html';
+        location.href = '../index.html';
       });
     }
 
