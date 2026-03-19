@@ -21,7 +21,7 @@ function copyScripts() {
 export default defineConfig({
   plugins: [react(), copyScripts()],
   root: '.',
-  base: '/overvakningsmyndigheten/',
+  base: '/',
   build: {
     rollupOptions: {
       input: {
