@@ -15,6 +15,14 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
+**`npx playwright show-report` only works after a successful run** — it reads the `playwright-report/` folder that Playwright creates when tests finish. That folder is **not in git** (gitignored), so after cloning you must run the tests once first.
+
+One command to run tests **and** open the HTML report in a browser:
+
+```bash
+npm run test:e2e:run-and-report
+```
+
 - **Dev server:** `http://127.0.0.1:5173` (started by Playwright if not already running).
 - **Test file:** `e2e/site-walkthrough.spec.ts`
 - **Config:** `playwright.config.ts`
