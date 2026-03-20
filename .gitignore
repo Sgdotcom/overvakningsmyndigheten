@@ -4,3 +4,7 @@ dist/
 .cursor/
 .history/
 archive/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
